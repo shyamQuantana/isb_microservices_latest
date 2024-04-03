@@ -1,0 +1,19 @@
+doctype html
+html(lang='en')
+  head
+    title= title
+    link(rel="shortcut icon", href=isLocalhost? '/brandicon.png':'/backend/brandicon.png')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    if result.thumbnail_url
+     meta(property='og:image', content=result.thumbnail_url)
+
+    if result.course_name
+     meta(property='og:title', content=`ISB Online - Digital Credential-${result.course_name}`)
+
+    meta(property='og:description', content='Access world-class, research-backed business education with ISB Online - a state-of-the-art, immersive, digital learning experience that empowers you with essential business acumen to excel in today’s dynamic workplace. Join a diverse global community of learners to drive your professional growth.')
+    link(rel='stylesheet', href=isLocalhost ? '/stylesheets/style.css':'/backend/stylesheets/style.css',type='text/css')
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous")
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css')
+  body
+    block content
+    script(src=isLocalhost?'/script/sharableScript.js':'/backend/script/sharableScript.js')

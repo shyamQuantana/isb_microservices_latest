@@ -1,0 +1,440 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #f6f6f6 !important;
+  width: 100%;
+  overflow-x: clip;
+}
+
+a {
+  color: #00B7FF;
+}
+.course_complete_margin_forimage{
+  box-shadow: 0px 8.63631820678711px 25.18159103393555px 0px rgba(0, 0, 0, 0.20);
+  width: 230px;
+  margin-left: 10px;
+}
+
+.mainContainer{
+  overflow: auto;
+  height: 90vh;
+}
+
+.NotFoundcontainer {
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  height: 80vh; /* Set the height of the container, adjust as needed */
+}
+
+.notFoundmessage {
+  font-size: 24px;
+  font-weight: 600;
+  color: #057092;
+}
+
+
+.brand_logo {
+  height: 60px;
+  padding: 11px 11px 11px 25px;
+  left: 28px;
+  border-radius: 0px;
+  align-items: center;
+  margin-left: -12px;
+}
+.navbar {
+  padding-top: 0.1rem;
+  border: 2px solid rgb(163, 163, 163);
+  box-shadow: rgb(0 0 0 / 69%) -0.43rem 0px 0.87rem 0px;
+  top: 0;
+  position: sticky;
+}
+.nav_bar_contnts li {
+  padding: 10px;
+}
+.sharable_certificate_main{
+  background-color: unset !important;
+  width: 60%;
+  margin: 0 auto;
+}
+.certificate_heading_one{
+  color: #000;
+  font-size: 15.547px;
+  font-weight: 400;
+  line-height: 170%;
+}
+
+.certificate_heading_two{
+  color: #306E8F;
+font-size: 31.094px;
+font-weight: 700;
+line-height: normal;
+}
+
+.share-badge-parent {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr) repeat(1, 24rem);
+  /* grid-template-rows: repeat(2, 1fr) repeat(3, 0fr); */
+  grid-template-rows: 2fr repeat(0, 3fr);
+  grid-column-gap: 12px;
+  grid-row-gap: 12px;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.05);
+  }
+  
+  .share-badge-div1 { grid-area: 1 / 1 / 2 / 2;
+    background: #26ABCD;
+  }
+  .share-badge-div2 { grid-area: 2 / 1 / 3 / 2; 
+    background: #FFF;
+  }
+  .share-badge-div3 { grid-area: 1 / 2 / 3 / 3;
+    background: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .share-badge-parent> .share-badge-div1 > .first_section {
+    padding: 22px;
+  }
+  .share-badge-parent> .share-badge-div2 > .second_section {
+    padding: 24px;
+  }
+  .share-badge-parent> .share-badge-div3 > .third_section {
+    padding: 22px;
+  }
+  .sharable_user_course_info{
+    color: #ffffff;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 170%;
+  }
+  .bold_text{
+    font-weight: 600 !important;
+  }
+  .congratulations_abt_course{
+    color: #000000;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .sharable_certificate_content{
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 170%;
+    word-break:break-word;
+  }
+
+  .btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+  }
+  .btn:active, .btn-primary.active {
+    background: #007299;
+    box-shadow: none;
+  }
+
+  .btn :hover{
+    background: #057092 ;
+  }
+  .my_btn_cls{background-color: #057092;color: white;
+    --bs-btn-hover-bg:#0b617e;
+    --bs-btn-active-bg:#0b617e;
+    --bs-btn-hover-color: #ffffff;
+    border: 0;
+    --bs-btn-border-color: #0b617e;
+    --bs-btn-hover-border-bg:0;
+    --bs-btn-focus-color: #0b617e;
+    margin-top: 10px;
+    border-radius: 5px;
+  
+  }
+  .experience_free_lesson_btn{
+    color: #FFF !important;
+    font-size: 13.992px !important;
+    line-height: normal !important;
+    padding: 8.551px 13.215px !important;
+    border-radius: 3.887px !important;
+    vertical-align: -webkit-baseline-middle !important;
+    background: var(--logo-blueicou, #057092) !important;
+  }
+  .enrollText{
+    font-size: 14px;
+    color: #000000;
+    font-weight: normal;
+  }
+
+  .congratulations_badge_Credentials{
+    width: 300px;
+    height: 300px;
+    background: url('../badge_with_logo.svg') no-repeat center;
+    background-size: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+  }
+
+  .congratulations_badge_text_Credentials{
+    margin-top: 83px;
+    line-height: 1.2;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .congratulations_badge_text_Credentials p:first-child{
+    color: #FFF;
+    text-align: center;
+    font-family: Arial;
+    font-size: 18.333px;
+    font-weight: 700;
+    line-height: 170%;
+    text-transform: uppercase;
+  }
+  .congratulations_badge_text_Credentials p:last-child{
+    color: #FFF;
+    text-align: center;
+    font-family: Arial;
+    font-size: 14.615px;
+    font-weight: 400;
+    line-height: 170%;
+    text-transform: uppercase;
+    margin-top: 18px;
+  }
+  .Certificate_module_heading{
+    color: #000;
+    font-size:20px;
+    font-weight: 600;
+    line-height: normal;
+  }
+  .gap-3 {
+    gap: 1rem!important;
+  }
+  
+  body :not(.message-container)::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  body :not(.message-container)::-webkit-scrollbar-thumb {
+    background: #057092;
+    border-radius: 10px;
+  }
+  
+  body :not(.message-container)::-webkit-scrollbar-track-piece {
+    background: #e4e3e3;
+    border-radius: 10px;
+  }
+
+  /* index.css */
+  
+  html,
+  body {
+    overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  background-color: #f7f7f7 !important;
+
+  /* background-image: url("../public/images/isbonline_background.svg"); */
+  background-attachment: fixed;
+  scroll-behavior: smooth;
+  overflow: visible;
+  /* margin-bottom: 20px; */
+  overflow: visible !important;
+}
+
+
+.container-maintenance .create {
+  width: 100%;
+  height: 100%;
+  background-image: url("../public/images/upgrade.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  /* Prevent text selection */
+  -webkit-user-drag: none;
+  /* Disable dragging in WebKit browsers */
+  -khtml-user-drag: none;
+  /* Disable dragging in Konqueror (old WebKit) */
+  -moz-user-select: none;
+  /* Disable text selection in Firefox */
+  -ms-user-select: none;
+  /* Disable text selection in Internet Explorer/Edge */
+  -webkit-user-select: none;
+  /* Disable text selection in Chrome/Safari */
+}
+
+.container-maintenance .image_text {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: left;
+  margin: 0 90px;
+  color: white;
+}
+
+.container-maintenance .font_for_system {
+  font-size: 56px;
+  font-weight: 700;
+}
+
+.container-maintenance .font_for_upgrade {
+  font-size: 56px;
+  font-weight: 700;
+}
+
+.container-maintenance .margin_for_p {
+  font-size: 22px;
+  font-weight: 400;
+  width: 400px;
+  color: #ffffff;
+}
+
+.container-maintenance {
+  width: 100%;
+  height: 100vh;
+  /* Ensure the container occupies the full width of its parent */
+}
+.my_outline_button_cls {
+  margin-top: 10px;
+  color:#057092 !important;
+  border:1px solid #057092 !important;
+}
+
+.sharable_certificate_btn{
+  border-radius: 6px !important;
+  font-size: 14px !important;
+  margin-top: 0px !important;
+  margin-left: 20px !important;
+  padding: 4.664px 7.773px !important;
+  color: var(--logo-blueicou, #057092) !important;
+  font-weight: 700 !important;
+}
+.my_certificate_share_btn{
+  /* padding: 4.664px 7.773px; */
+  color: #FFF !important;
+  font-size: 13.992px !important;
+  font-weight: 700 !important;
+}
+
+/* Media query for screens with a maximum width of 1440px */
+@media (max-width: 1440px) {
+  .sharable_certificate_main {
+    width: 80%; /* Adjust the width for screens up to 1440px */
+  }
+}
+
+.image-container {
+  /* width: 300px;  */
+  height: 100px; /* Set the initial height of the container */
+  border: 1px solid #ccc;
+  overflow: hidden; /* Hide any overflow of the image */
+}
+
+.fit-image {
+  /* width: 100%; */
+  height: 100%; /* Set the image height to 100% of the container height */
+  /* object-fit: cover;  */
+}
+.mobileViewContainer{
+  display: none;
+}
+@media only screen and (max-width: 768px) {
+  .webViewContainer{
+    display: none;
+  }
+  .mobileViewContainer{
+  display: block;
+  overflow-x: clip !important;
+}
+.sharable_certificate_main {
+  width: 100%;
+}
+.certificate_heading_one{
+  color:var(--Content, #7C8495);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 170%;
+}
+.certificate_heading_two{
+  color: var(--Logo-Blueicou, #057092);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: normal;
+}
+.share-badge-parent {
+  display: flex;
+  flex-direction: column;
+}
+.sharable_user_course_info{
+  color: #ffffff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 170%;
+}
+.share-badge-parent> .share-badge-div1 > .first_section {
+  padding: 24px;
+}
+.share-badge-div1 {
+  background: #26ABCD;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.05);
+}
+.congratulations_badge_Credentials{
+  width: 210px;
+  height: 210px;
+  background: url('../badge_with_logo.svg') no-repeat center;
+  background-size: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+}
+.congratulations_badge_text_Credentials{
+  margin-top: 35px;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.congratulations_badge_text_Credentials p:last-child{
+  color: #FFF;
+  text-align: center;
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 170%;
+  text-transform: uppercase;
+  margin-top: 18px;
+}
+.experience_free_lesson_btn{
+  color: #FFF !important;
+  font-size: 18px !important;
+  font-weight: 700px !important;
+  line-height: normal !important;
+  padding: 8.551px 13.215px !important;
+  border-radius: 3.887px !important;
+  vertical-align: -webkit-baseline-middle !important;
+  background: var(--logo-blueicou, #057092) !important;
+}
+
+  .share-badge-div3 {
+    background: #FFF;
+    display: unset !important;
+  }
+  .course_complete_margin_forimage{
+    box-shadow: 0px 8.63631820678711px 25.18159103393555px 0px rgba(0, 0, 0, 0.20);
+    width: 210px;
+    margin-left: 0px;
+  }
+}

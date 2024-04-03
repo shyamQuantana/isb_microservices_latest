@@ -1,0 +1,257 @@
+
+extends layout
+block content
+        //- nav.navbar.navbar-expand-lg.navbar-light.border-0(style="background-color: white; width: 100%; padding: 0 20px 0; justify-content: space-between; z-index: 99")
+        //-   img.brand_logo.cursor-pointer(src= isLocalhost? '/ISB_Online_logo.png':'/backend/ISB_Online_logo.png', alt='', onclick=`logoClick()`,style='cursor:pointer')
+        //-   .collapse.navbar-collapse.nav_bar_contents#navbarSupportedContent
+            //- ul.navbar-nav.me-auto.mb-2.mb-lg-0.m-auto
+            //-   li.nav-item
+            //-     a.nav-link.active(href="#" onclick="navtoDashboard()", style="color: #000;") Dashboard
+            //-   li.nav-item
+            //-     a.nav-link.active(href="#" onclick="navtoLearingTrack()", target='_blank', style="color: #000;") Learning Tracks
+
+        //- badge
+        - if (typeof result !== 'undefined' && Object.keys(result).length > 0)
+          div.mainContainer.webViewContainer
+           div.sharable_certificate_main.mb-5
+             div.pt-5.pl-2
+                span.certificate_heading_one ISB Online Digital Credential
+                  div
+                    span.certificate_heading_two #{result.course_name?result.course_name:result.programme_name}
+                     div
+                        .share-badge-parent.mt-2
+                          div.share-badge-div1
+                             div.first_section
+                                 span.sharable_user_course_info
+                                    span.bold_text=result.user_name 
+                                    span  has successfully completed 
+                                    span.bold_text=result.module_name && result.module_name 
+                                    - if (result.module_name)
+                                     span  Module from the 
+                                    span.bold_text=result.course_name && result.course_name 
+                                    - if (result.course_name)
+                                     span.bold_text  Course on 
+                                    - if (!result.module_name&&!result.course_name)
+                                     span.bold_text #{result.programme_name} Programme On
+                                    - const options = { year: 'numeric', month: 'short', day: '2-digit' };
+                                    - const formattedDate =new Date(result.issued_date).toLocaleDateString('en-US', options);
+                                    span.bold_text  #{formattedDate}
+                                                    
+                          div.share-badge-div2
+                             div.second_section
+                               - if(result.course_header_image!=='null'&&result.course_header_image!==''&&result.course_header_image){
+                                  div.row
+                                    div.col-lg-5
+                                      div.image-container
+                                        img.fit-image(src=result.course_header_image, alt='')
+
+                                    div.col-lg-7
+                                      div 
+                                        div.congratulations_abt_course
+                                         | About #{result.course_name?result.course_name:result.programme_name}
+                                      div
+                                        //- div.enrollText.mt-1 #{result.total_enrollment_count} Students Enrolled
+                                - } else {
+                                       div.row
+                                         div.col-lg-12
+                                          div 
+                                            div.congratulations_abt_course
+                                              | About #{result.course_name?result.course_name:result.programme_name}
+                                          div
+                                            //- div.enrollText.mt-1 #{result.total_enrollment_count} Students Enrolled
+                                - }
+                                div.d-flex.flex-column.pt-3
+                                  div 
+                                - const courseDescription = result.course_description || null; // Ensure it's either a non-empty string or null
+                                  - if (courseDescription && courseDescription.trim() !== ''&&courseDescription!=='null') {
+                                    p.sharable_certificate_content
+                                      | #{courseDescription}
+                                  - } else {
+                                    div.enrollText No description
+                                  - }
+                                div.mt-4
+                                  div 
+                                   button(type="button", onclick=`experienceFreeLesson()`).btn.my_btn_cls.mt-0.experience_free_lesson_btn
+                                        span.pe-1.ps-1
+                                            |Experience FREE Lesson
+                                            i.fas.fa-arrow-right.pl-1
+                                           
+                          
+                          div.share-badge-div3
+                            div.third_section
+                              div
+                                - if(result.is_module_badge){
+                                  div.congratulations_badge_Credentials.mt-3
+                                    div.congratulations_badge_text_Credentials
+                                     p.text-center.mb-2.white_color
+                                      | #{result.module_name.length >= 43 ? result.module_name.slice(0, 43) + '...' : result.module_name}
+                                - }else{
+                                    div.d-block.text-center 
+                                      div.course_complete_margin_forimage
+                                        img(src=result.thumbnail_url, alt='',width="230" class='img-fluid') 
+
+                                - }
+                               div.d-block.text-center.mt-3
+                                 span.Certificate_module_heading
+                                     | #{result.programme_name}
+                               div.d-flex.gap-3.mt-3.justify-content-center
+                                 button(type="button", onclick=`copyLink('${result.thumbnail_url}')`).btn.my_outline_button_cls.submit_button.fw-bold.sharable_certificate_btn.m-0
+                                    |Copy Link
+                                 button(type="button", onclick=`shareBadgeLinkedin('${credentials_id}')`).btn.my_btn_cls.mt-0.my_certificate_share_btn
+                                     span.pe-1.ps-1
+                                        |Share on LinkedIn
+                                        i.fas.fa-arrow-right.pl-1
+          div.mainContainer.mobileViewContainer.bg-white
+           div.sharable_certificate_main
+             div.pt-5
+                span.certificate_heading_one.pl-3 ISB Online Digital Credential
+                  div
+                    span.certificate_heading_two.pl-3 #{result.course_name?result.course_name:result.programme_name}
+                     div
+                        .share-badge-parent.mt-2
+                          div.share-badge-div1
+                             div.first_section
+                                 span.sharable_user_course_info
+                                    span.bold_text=result.user_name 
+                                    span  has successfully completed 
+                                    span.bold_text=result.module_name && result.module_name 
+                                    - if (result.module_name)
+                                     span  Module from the 
+                                    span.bold_text=result.course_name && result.course_name 
+                                    - if (result.course_name)
+                                     span.bold_text  Course on 
+                                    - if (!result.module_name&&!result.course_name)
+                                     span.bold_text #{result.programme_name} Programme On
+                                    - const options2 = { year: 'numeric', month: 'short', day: '2-digit' };
+                                    - const formattedDate2 =new Date(result.issued_date).toLocaleDateString('en-US', options2);
+                                    span.bold_text  #{formattedDate2}
+                                                    
+                          div.share-badge-div2
+                             div.second_section
+                                div
+                                - if(result.is_module_badge){
+                                  div.congratulations_badge_Credentials.mt-3
+                                    div.congratulations_badge_text_Credentials
+                                     p.text-center.mb-2.white_color
+                                      | #{result.module_name.length >= 43 ? result.module_name.slice(0, 43) + '...' : result.module_name}
+                                - }else{
+                                    div.d-flex.justify-content-center 
+                                      div.course_complete_margin_forimage
+                                        img(src=result.thumbnail_url, alt='',width="230" class='img-fluid') 
+
+                                - }
+                               div.d-block.text-center
+                                 span.Certificate_module_heading
+                                     | #{result.programme_name}
+                               div.d-flex.gap-3.mt-3.justify-content-center
+                                 button(type="button", onclick=`copyLink('${result.thumbnail_url}')`).btn.my_outline_button_cls.submit_button.fw-bold.sharable_certificate_btn.m-0
+                                    |Copy Link
+                                 button(type="button", onclick=`shareBadgeLinkedin('${credentials_id}')`).btn.my_btn_cls.mt-0.my_certificate_share_btn
+                                     span.pe-1.ps-1
+                                        |Share on LinkedIn
+                                        i.fas.fa-arrow-right.pl-1
+
+
+                               
+                                           
+                          
+                          div.share-badge-div3
+                            div.third_section
+                               div 
+                                 - if(result.course_header_image!=='null'&&result.course_header_image!==''&&result.course_header_image){
+                                  div.row
+                                    div.col-lg-5
+                                      div.image-container
+                                        img.fit-image(src=result.course_header_image, alt='')
+
+                                    div.col-lg-7
+                                      div 
+                                        div.congratulations_abt_course
+                                         | About #{result.course_name?result.course_name:result.programme_name}
+                                      div
+                                        //- div.enrollText.mt-1 #{result.total_enrollment_count} Students Enrolled
+                                - } else {
+                                       div.row
+                                         div.col-lg-12
+                                          div 
+                                            div.congratulations_abt_course
+                                              | About #{result.course_name?result.course_name:result.programme_name}
+                                          div
+                                            //- div.enrollText.mt-1 #{result.total_enrollment_count} Students Enrolled
+                                - }
+                                div.d-flex.flex-column.pt-3
+                                  div 
+                                - const courseDescription = result.course_description || null; // Ensure it's either a non-empty string or null
+                                  - if (courseDescription && courseDescription.trim() !== ''&&courseDescription!=='null') {
+                                    p.sharable_certificate_content
+                                      | #{courseDescription}
+                                  - } else {
+                                    div.enrollText No description
+                                  - }
+                                div.mt-4
+                                  div 
+                                   button(type="button", onclick=`experienceFreeLesson()`).btn.my_btn_cls.mt-0.experience_free_lesson_btn
+                                        span.pe-1.ps-1
+                                            |Experience FREE Lesson
+                                            i.fas.fa-arrow-right.pl-1
+                              
+        - else
+          div.message-container 
+           div.NotFoundcontainer
+             div.notFoundmessage Credential is not found
+              div.mt-2.d-block.text-center
+                div 
+                  button(type="button", onclick=`navToHome()`).btn.my_btn_cls.mt-0.experience_free_lesson_btn
+                    span.pe-1.ps-1
+                      |Go to ISB Online Home
+                      i.fas.fa-arrow-right.pl-2
+
+                                        
+                            
+                            
+                
+
+                
+         
+           
+         
+
+                                  
+
+
+//-badge
+//-   user_id: new ObjectId("6458c1b5226fd8dea913b837"),  
+//-   user_name: 'Pasha',
+//-   module_name: 'Decision Making',
+//-   module_id: new ObjectId("645901ed226fd8dea914a9b5"),
+//-   course_name: 'Critical Thinking',
+//-   course_id: new ObjectId("645901ed226fd8dea914a9ab"),
+//-   course_header_image: 'null',
+//-   programme_name: 'Critical Thinking CBC',
+//-   program_id: new ObjectId("64590256226fd8dea914ab53"),
+//-   badge_url: 'https://isb-online-bucket.s3.ap-south-2.amazonaws.com/Development/Decision%20Making-Critical%20Thinking.jpg',
+//-   is_module_badge: true,
+//-   issued_date: 1689318064268,
+//-   course_description: 'null'
+//- }
+
+  
+
+//- certificate
+//-   {
+//-   user_id: new ObjectId("6458c1b5226fd8dea913b837"),
+//-   user_name: 'Pasha',
+//-   module_name: undefined,
+//-   module_id: undefined,
+//-   course_name: 'LT',
+//-   course_id: new ObjectId("6465ff2645a92a98325aafa2"),
+//-   course_header_image: 'null',
+//-   programme_name: 'LT Course track',
+//-   program_id: new ObjectId("6466002f45a92a98325ab28c"),
+//-   badge_url: 'https://i.ibb.co/dj7Q3CY/Pasha-learning-track-2-page-0001.jpg',
+//-   is_module_badge: false,
+//-   issued_date: 1684406623285,
+//-   course_description: 'null'
+//- }
+
+
