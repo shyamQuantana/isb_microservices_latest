@@ -348,7 +348,12 @@ let Constants = {
     //Quiz default number of attempts
     DEFAULT_QUIZ_ATTEMPTS_COUNT: 99,
     //Max ITA Score
-    MAX_ITA_ATTENDENCE_POINTS:10
+    MAX_ITA_ATTENDENCE_POINTS:10,
+
+
+    
+    NODE_ENV:process.env.NODE_ENV,
+    SERVER_HOST:process.env.SERVER_HOST
 }
 
 if (app.get('env') === 'development') {

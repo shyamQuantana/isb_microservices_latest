@@ -5,12 +5,13 @@ var moment = require('moment-timezone');
 const axios = require('axios');
 const EmailTemplates = require('../../app/utilities/email_templates');
 const EmailSending = require('../../app/utilities/email_sending');
-async function emailConfigurationForPayNow(req,isb_user_details,programApplication,user_id){
-    var base_url = "https://"+req.headers.host;
+async function emailConfigurationForPayNow(isb_user_details,programApplication,user_id,reminder){
+    var base_url = Constants.SERVER_HOST;
     var payment_url = "";
-    payment_url = base_url+ "/pay/"+user_id+"/"+programApplication[0].program_id ;
+        payment_url = base_url+ "/pay/"+user_id+"/"+programApplication[0].program_id ;
+        console.log(payment_url,"12 line checking")
         var payment_date =new Date(programApplication[0].start_date + (Constants.PROGRAM_POLICY_PAY_BY_DAY * 24 * 60 * 60 * 1000)).setHours(23, 59, 59, 999);
-        var accepted_mail_subject = `Congratulations! You have been accepted to the ISB Online Certificate Programme in ${programApplication[0].learning_track_title}`;
+        var accepted_mail_subject = `${reminder==""?"":"Reminder" +" "+reminder}  Congratulations! You have been accepted to the ISB Online Certificate Programme in ${programApplication[0].learning_track_title}`;
         var user_name = `${isb_user_details[0].first_name}`;
         var learning_track_name = `${programApplication[0].learning_track_title}`;
         var start_date = moment.tz(programApplication[0].start_date, "Asia/Kolkata").format("Do MMMM YYYY");
@@ -18,7 +19,6 @@ async function emailConfigurationForPayNow(req,isb_user_details,programApplicati
         var formated_payment_last_date = moment.tz(payment_last_date, "Asia/Kolkata").format("Do MMMM YYYY");
         html = EmailTemplates.getApplicationApprovedTemplate(user_name?.trim(), learning_track_name, start_date, formated_payment_last_date, payment_url);
             try {
-                //let dummy_email = "himabindu+1@quantana.in"
                 var email_response = await EmailSending.emailSender(
                     isb_user_details[0].email,
                     accepted_mail_subject,

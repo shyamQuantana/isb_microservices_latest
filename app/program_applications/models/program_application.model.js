@@ -197,6 +197,10 @@ var programApplicationsSchema = new Schema({
         type: Object,
         default: null
     },
+    reminders_list:{
+        type:Array,
+        default:[]
+    }
 
 
 }, { collection: "programapplications" });
@@ -217,6 +221,13 @@ exports.getProgramApplicationDetails = (program_id,user_id) => {
 
 }
 
-exports.getAllProgramApplicationsDetails = (program_id) => {
+// exports.getAllProgramApplicationsDetails = () => {
+//     return programapplications.find({program_id: mongoose.Types.ObjectId("65df02f4c0653b8146bc3266"),aws_id:"65e5a031f26d79cb5a980c18"});
+// }
+exports.getAllProgramApplicationsDetails = () => {
     return programapplications.find();
+}
+exports.updateTheProgramApplicationsDetails = (each_program_application) => {
+    return programapplications.updateOne({ program_id: mongoose.Types.ObjectId(each_program_application.program_id), aws_id: each_program_application.aws_id },
+    { $set: { reminders_list: each_program_application.reminders_list, application_updated_date: CurrentDate.getCurrentDateTime() } }, { upsert: true });
 }

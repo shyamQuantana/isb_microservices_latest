@@ -12,13 +12,13 @@ ProgramApplicationController.sendEmailReminders
 );
 }
 //it will run for every 7 minutes
-CronJob.schedule(
-    '*/7 * * * *',
-    () => {
-        ProgramApplicationController.sendEmailReminders()
-    },
-    {
-      scheduled: true,
-      timezone: 'Asia/Kolkata'
-    }
-)
+// CronJob.schedule(
+//     '*/7 * * * *',
+//     () => {
+//         ProgramApplicationController.sendEmailReminders()
+//     },
+//     {
+//       scheduled: true,
+//       timezone: 'Asia/Kolkata'
+//     }
+// )
