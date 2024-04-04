@@ -119,7 +119,12 @@ var programApplicationsSchema = new Schema({
             return CurrentDate.getCurrentDateTime()
         }
     },
-
+    application_approved_date: {
+        type: Number,
+        default: function () {
+            return CurrentDate.getCurrentDateTime()
+        }
+    },
     application_submission_email_sent: {
         type: Number,
         default: 0
@@ -200,14 +205,18 @@ const programapplications = mongoose.model('programapplications', programApplica
 
 exports.programapplications = programapplications;
 
-exports.updateProgramApplicationStatus = (program_id, user_id, application_status, reject_reason, reject_comment, payment_date) => {
+exports.updateProgramApplicationStatus = (program_id, user_id, application_status) => {
 
     return programapplications.updateOne({ program_id: mongoose.Types.ObjectId(program_id), aws_id: user_id },
-        { $set: { application_status: application_status, application_updated_date: CurrentDate.getCurrentDateTime(), application_reject_reason: reject_reason, application_reject_comment: reject_comment, payment_date:payment_date } }, { upsert: true });
+        { $set: { application_status: application_status, application_updated_date: CurrentDate.getCurrentDateTime(),application_approved_date:CurrentDate.getCurrentDateTime() } }, { upsert: true });
 }
 
-exports.getProgramApplicationDetails = (program_id) => {
+exports.getProgramApplicationDetails = (program_id,user_id) => {
 
-    return programapplications.find({program_id: mongoose.Types.ObjectId(program_id)});
+    return programapplications.find({program_id: mongoose.Types.ObjectId(program_id),aws_id:user_id});
 
+}
+
+exports.getAllProgramApplicationsDetails = (program_id) => {
+    return programapplications.find();
 }

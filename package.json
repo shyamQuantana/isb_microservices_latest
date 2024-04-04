@@ -49,6 +49,7 @@
     "multer-s3": "^3.0.1",
     "mysql": "^2.18.1",
     "nanoid": "^3.1.30",
+    "node-cron": "^3.0.3",
     "node-unzip-2": "^0.2.8",
     "path": "^0.12.7",
     "pdf2img-promises": "^0.7.3",
