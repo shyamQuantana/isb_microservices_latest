@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//checking for the commit
 const Constants = require('./constants');
 exports.authenticateJWT = (req, res, next) => {
     const authHeader = req.headers.authorization;
