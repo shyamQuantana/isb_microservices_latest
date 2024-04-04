@@ -1,0 +1,8 @@
+node_modules/
+nbproject/
+.env
+**/desktop.ini
+package-lock.json
+downloads/
+uploads/
+coverage/
