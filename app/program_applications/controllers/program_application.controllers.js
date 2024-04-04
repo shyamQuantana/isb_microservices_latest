@@ -54,7 +54,8 @@ exports.sendEmailReminders = async (req, res, next) => {
     async.eachSeries(programApplications,  function ( each_program_application, programApplicationCallback) {
         no_of_reminders=each_program_application.reminders_list != undefined && each_program_application.reminders_list != []?each_program_application.reminders_list.length+1:1;
         if(each_program_application.is_paid==0){
-             if( new Date(each_program_application.program_start_date + (i * 24 * 60 * 60 * 1000)).setHours(23, 59, 59, 999)>=utilities.getCurrentDateTime()){
+              // april 4 +7 == april 11    if today date april 12 
+             if(utilities.getCurrentDateTime()<=new Date(each_program_application.program_start_date + (i * 24 * 60 * 60 * 1000)).setHours(23, 59, 59, 999)){
                 const approvedDate = new Date(each_program_application.application_approved_date);
             // Add 7 days to the approved date
             const modifiedDate = new Date(approvedDate.getTime() + ((no_of_reminders*i) * 24 * 60 * 60 * 1000));
